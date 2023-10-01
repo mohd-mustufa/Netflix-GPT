@@ -14,8 +14,8 @@ const validateFormData = (email, password, name, isSignInForm) => {
 const validateName = (name) => {
   if (name.length < 1) return "Name cannot be empty";
   if (name.length > 50) return "Name cannot be more than 50 characters";
-  if (!/^[A-Za-z\s]+$/.test(name))
-    return "Name can have only uppercase, lowercase and spaces";
+  if (!/^[A-Za-z0-9\s]+$/.test(name))
+    return "Name can have only uppercase, lowercase, numbers and spaces";
   return null;
 };
 
