@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +18,6 @@ const Login = () => {
   const password = useRef("");
   const name = useRef("");
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleFormData = () => {
@@ -58,7 +56,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,16 +75,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          const { uid, email, displayName, photoURL } = user;
-          dispatch(
-            addUser({
-              uid: uid,
-              email: email,
-              displayName: displayName,
-              photoURL: photoURL,
-            })
-          );
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -108,7 +95,7 @@ const Login = () => {
         <img
           alt="background"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          className="min-h-screen min-w-screen w-full h-full object-cover object-center"
+          className="object-cover object-center w-full h-full min-h-screen min-w-screen"
         />
       </div>
 
@@ -116,13 +103,13 @@ const Login = () => {
         onSubmit={(e) => e.preventDefault()}
         className="mx-auto my-36 px-16 py-10 w-[450px] h-[500px] absolute right-0 left-0 bg-black bg-opacity-80 text-white rounded-lg"
       >
-        <h1 className="my-5 font-medium text-4xl">
+        <h1 className="my-5 text-4xl font-medium">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
         {!isSignInForm && (
           <input
-            className="px-4 py-3 my-2 w-full bg-neutral-700 rounded-s rounded-e"
+            className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
             type="text"
             placeholder="Full Name"
             name="name"
@@ -130,24 +117,24 @@ const Login = () => {
           />
         )}
         <input
-          className="px-4 py-3 my-2 w-full bg-neutral-700 rounded-s rounded-e"
+          className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
           type="text"
           placeholder="Email Address"
           name="email"
           ref={email}
         />
         <input
-          className="px-4 py-3 my-2 w-full bg-neutral-700 rounded-s rounded-e"
+          className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
           type="password"
           placeholder="Password"
           name="password"
           ref={password}
         />
 
-        <p className="text-md font-medium text-red-500">{errorMessage}</p>
+        <p className="font-medium text-red-500 text-md">{errorMessage}</p>
 
         <button
-          className="px-4 py-4 my-4 w-full bg-red-600 rounded-s rounded-e"
+          className="w-full px-4 py-4 my-4 bg-red-600 rounded-s rounded-e"
           onClick={handleFormData}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
@@ -157,7 +144,7 @@ const Login = () => {
           {isSignInForm ? "New to Netflix? " : "Already Registered? "}
         </span>
         <button
-          className="hover:underline cursor-pointer"
+          className="cursor-pointer hover:underline"
           onClick={toggleSignInForm}
         >
           {isSignInForm ? "Sign Up now." : "Sign In now."}
