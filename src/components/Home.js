@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import { BACKGROUND_URL_SMALL } from "../utils/constants";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Home = () => {
       <div className="absolute z-10 h-screen w-screen">
         <img
           alt="background"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={BACKGROUND_URL_SMALL}
           className="object-cover object-center h-full w-full"
         />
       </div>
@@ -30,10 +31,10 @@ const Home = () => {
           </h1>
           <h2 className="m-2 text-3xl">Watch anywhere. Cancel at any time.</h2>
           <button
-            className="cursor-pointer hover:underline text-2xl"
+            className="py-3 px-8 m-3 min-w-fit font-medium text-xl text-white bg-red-600 rounded-md cursor-pointer"
             onClick={() => navigate("/login")}
           >
-            Click here to get started
+            Get Started
           </button>
         </div>
       </div>

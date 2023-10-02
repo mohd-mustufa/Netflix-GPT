@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { addUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { BACKGROUND_URL_LARGE, DEFAULT_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -43,8 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name?.current?.value,
-            photoURL:
-              "https://occ-0-1492-1009.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e",
+            photoURL: DEFAULT_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = user;
@@ -94,7 +94,7 @@ const Login = () => {
       <div className="absolute">
         <img
           alt="background"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BACKGROUND_URL_LARGE}
           className="object-cover object-center w-screen h-screen"
         />
       </div>
