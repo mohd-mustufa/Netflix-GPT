@@ -52,7 +52,7 @@ const Header = (props) => {
           />
           <div>
             <button
-              className="px-4 mx-10 my-4 font-medium text-sm text-white bg-red-700 rounded-lg cursor-pointer min-w-fit h-9"
+              className="px-4 mx-10 my-4 font-medium text-sm text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-9"
               onClick={() => navigate("/login")}
             >
               Sign In
