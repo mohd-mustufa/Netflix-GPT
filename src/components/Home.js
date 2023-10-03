@@ -32,7 +32,13 @@ const Home = () => {
           <h2 className="m-2 text-3xl">Watch anywhere. Cancel at any time.</h2>
           <button
             className="py-3 px-8 m-3 min-w-fit font-medium text-xl text-white bg-red-600 rounded-md cursor-pointer"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              navigate("/login", {
+                state: {
+                  home: true,
+                },
+              })
+            }
           >
             Get Started
           </button>

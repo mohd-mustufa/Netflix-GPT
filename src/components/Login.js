@@ -10,9 +10,12 @@ import { auth } from "../utils/firebase";
 import { addUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { BACKGROUND_URL_LARGE, DEFAULT_AVATAR } from "../utils/constants";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
-  const [isSignInForm, setIsSignInForm] = useState(true);
+  const location = useLocation();
+  const alreadyRegistered = location.state?.home ? false : true;
+  const [isSignInForm, setIsSignInForm] = useState(alreadyRegistered);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const email = useRef("");
