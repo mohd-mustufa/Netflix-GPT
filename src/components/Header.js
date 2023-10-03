@@ -59,20 +59,27 @@ const Header = (props) => {
           </div>
         </div>
       )}
-      {!props.home && (
+      {!props.home && !user && (
         <div className="absolute z-30 flex justify-between w-full px-3 py-2 bg-gradient-to-b from-black">
           <Link to="/">
             <img className="w-52" alt="logo" src={LOGO_URL} />
           </Link>
+        </div>
+      )}
+      {!props.home && user && (
+        <div className="absolute z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black">
+          <Link to="/browse">
+            <img className="w-32" alt="logo" src={LOGO_URL} />
+          </Link>
           {user && (
             <div className="flex">
               <img
-                className="mx-2 my-5 rounded-md w-10 h-10"
+                className="mx-2 my-3 w-9 h-9 rounded-md"
                 src={user?.photoURL}
                 alt="profile-img"
               />
               <button
-                className="p-2 mx-2 my-5 font-medium text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-10"
+                className="px-2 pt-1 pb-2 mx-2 my-3 min-w-fit h-9 font-medium text-white bg-red-600 rounded-md cursor-pointer"
                 onClick={handleSignOut}
               >
                 Sign Out
