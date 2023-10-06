@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,9 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  // This is called when the user signs out, will redirect user to home page
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -23,6 +25,7 @@ const Header = (props) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      // If we get the user, then its a login/sign up event so we add the user data to store
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
@@ -41,7 +44,24 @@ const Header = (props) => {
       }
     });
 
-    return () => unsubscribe();
+    // Function to handle the scroll event
+    function handleScroll() {
+      // Check if the user has scrolled down
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    }
+
+    // Add a scroll event listener to the window
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove the scroll event listener when the component unmounts and unsubscribe
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      unsubscribe();
+    };
   }, []);
 
   return (
@@ -67,7 +87,15 @@ const Header = (props) => {
         </div>
       )}
       {!props.home && user && (
-        <div className="absolute z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black">
+        <div
+          className={`z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black fixed " +
+            ${
+              isScrolled
+                ? "bg-black transition duration-700"
+                : "transition duration-700"
+            }
+          `}
+        >
           <Link to="/browse">
             <img className="w-32" alt="logo" src={LOGO_URL} />
           </Link>

@@ -5,6 +5,7 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+  // Store the movies data to the store
   useNowPlayingMovies();
 
   return (

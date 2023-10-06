@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
+  // Function to get the now playing movies and put them in the store
   const getNowPlayingMovies = async () => {
     const data = await fetch(NOW_PLAYING_MOVIES_URL, API_OPTIONS);
     const jsonData = await data.json();

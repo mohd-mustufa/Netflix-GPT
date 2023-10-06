@@ -87,6 +87,7 @@ const Login = () => {
     }
   };
 
+  // Function to change the signin form to signup form
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
