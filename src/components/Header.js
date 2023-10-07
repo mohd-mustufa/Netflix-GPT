@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/userSlice";
 import { LOGO_URL } from "../utils/constants";
+import { toggleGptSearchView } from "../redux/gptSlice";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const Header = (props) => {
       .catch((error) => {
         navigate("/error");
       });
+  };
+
+  const handleGptSearchBtn = () => {
+    dispatch(toggleGptSearchView());
   };
 
   useEffect(() => {
@@ -97,17 +102,23 @@ const Header = (props) => {
           `}
         >
           <Link to="/browse">
-            <img className="w-32" alt="logo" src={LOGO_URL} />
+            <img className="w-36" alt="logo" src={LOGO_URL} />
           </Link>
           {user && (
             <div className="flex">
+              <button
+                className="px-4 pt-1 pb-3 mx-6 my-3 min-w-fit h-10 font-medium text-white text-lg bg-purple-800 rounded-md cursor-pointer"
+                onClick={handleGptSearchBtn}
+              >
+                GPT Search
+              </button>
               <img
-                className="mx-2 my-3 w-9 h-9 rounded-md"
+                className="mx-2 my-3 w-11 h-10 rounded-md"
                 src={user?.photoURL}
                 alt="profile-img"
               />
               <button
-                className="px-2 pt-1 pb-2 mx-2 my-3 min-w-fit h-9 font-medium text-white bg-red-600 rounded-md cursor-pointer"
+                className="px-4 pt-1 pb-3 mx-2 my-3 min-w-fit h-10 font-medium text-white text-lg bg-red-600 rounded-md cursor-pointer"
                 onClick={handleSignOut}
               >
                 Sign Out
