@@ -4,7 +4,11 @@ import { useState } from "react";
 
 const VideoBackground = ({ movieId }) => {
   const trailer = useSelector((store) => store.movies?.mainMovieTrailer);
-  const movie = useSelector((store) => store.movies?.nowPlayingMovies?.[0]);
+  const movie = useSelector((store) =>
+    store.movies?.nowPlayingMovies
+      ? store.movies.nowPlayingMovies[store.movies.nowPlayingMovies.length - 1]
+      : null
+  );
   const [showVideo, setShowVideo] = useState(true);
 
   // This will change the video screen to a photo screen after 2.5minutes
@@ -21,7 +25,7 @@ const VideoBackground = ({ movieId }) => {
       {showVideo && (
         <div className="-mt-24">
           <iframe
-            className="w-screen aspect-video"
+            className="w-full aspect-video"
             src={
               "https://www.youtube.com/embed/" +
               trailer?.key +
@@ -34,7 +38,7 @@ const VideoBackground = ({ movieId }) => {
       )}
       {!showVideo && (
         <img
-          className="w-screen aspect-video"
+          className="w-full max-h-screen aspect-video"
           src={"https://image.tmdb.org/t/p/original/" + movie?.backdrop_path}
           alt="poster"
         ></img>
