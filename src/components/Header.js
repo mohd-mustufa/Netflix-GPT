@@ -88,7 +88,7 @@ const Header = (props) => {
       )}
       {!props.home && user && (
         <div
-          className={`z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black fixed " +
+          className={`mt-24 z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black fixed " 
             ${
               isScrolled
                 ? "bg-black transition duration-700"

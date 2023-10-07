@@ -4,14 +4,14 @@ import { useState } from "react";
 
 const VideoBackground = ({ movieId }) => {
   const trailer = useSelector((store) => store.movies?.mainMovieTrailer);
-  const movie = useSelector((store) => store.movies?.nowPlayingMovies?.[16]);
+  const movie = useSelector((store) => store.movies?.nowPlayingMovies?.[0]);
   const [showVideo, setShowVideo] = useState(true);
 
   // This will change the video screen to a photo screen after 2.5minutes
   // Hack to remove the youtube auto-suggestions at the end of video
   setTimeout(() => {
     setShowVideo(false);
-  }, 150000);
+  }, 140000);
 
   // Store the trailer data of the main movie to the store
   useMovieTrailer(movieId);
@@ -19,7 +19,7 @@ const VideoBackground = ({ movieId }) => {
   return (
     <div>
       {showVideo && (
-        <div className="absolute -mt-24 -z-10">
+        <div className="-mt-24">
           <iframe
             className="w-screen aspect-video"
             src={
