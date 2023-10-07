@@ -12,6 +12,7 @@ const MainContainer = () => {
   const mainMovie = nowPlayingMovies
     ? nowPlayingMovies[nowPlayingMovies?.length - 1]
     : null;
+
   const { original_title, overview, id } = mainMovie;
 
   return (
