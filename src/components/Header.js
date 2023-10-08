@@ -4,8 +4,9 @@ import { auth } from "../utils/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/userSlice";
-import { LOGO_URL } from "../utils/constants";
+import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../redux/gptSlice";
+import { setLanguage } from "../redux/configSlice";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -69,6 +70,10 @@ const Header = (props) => {
     };
   }, []);
 
+  const handleLanguageChange = (e) => {
+    dispatch(setLanguage(e.target.value));
+  };
+
   return (
     <>
       {props?.home && (
@@ -76,7 +81,7 @@ const Header = (props) => {
           <img className="w-52" alt="logo" src={LOGO_URL} />
           <div>
             <button
-              className="px-4 mx-10 my-4 font-medium text-sm text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-9"
+              className="px-6 mx-10 my-4 font-medium text-lg text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-10"
               onClick={() => navigate("/login")}
             >
               Sign In
@@ -106,8 +111,19 @@ const Header = (props) => {
           </Link>
           {user && (
             <div className="flex">
+              <select
+                name="language"
+                className="bg-zinc-800 m-3 px-4 py-2 text-white rounded-md"
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES?.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
               <button
-                className="px-4 pt-1 pb-3 mx-6 my-3 min-w-fit h-10 font-medium text-white text-lg bg-purple-800 rounded-md cursor-pointer"
+                className="px-4 p-2 mx-6 my-3 min-w-fit h-10 font-medium text-white text-md bg-purple-800 rounded-md cursor-pointer"
                 onClick={handleGptSearchBtn}
               >
                 GPT Search
