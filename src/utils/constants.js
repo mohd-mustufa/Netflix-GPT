@@ -32,7 +32,7 @@ export const TOP_RATED_MOVIES_URL =
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
-  { identifier: "hi", name: "Hindi" },
-  { identifier: "kn", name: "Kannada" },
-  { identifier: "es", name: "Spanish" },
+  { identifier: "hi", name: "हिंदी" },
+  { identifier: "kn", name: "कन्नडा" },
+  { identifier: "es", name: "Español" },
 ];

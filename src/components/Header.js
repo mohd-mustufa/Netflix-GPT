@@ -7,11 +7,14 @@ import { addUser, removeUser } from "../redux/userSlice";
 import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../redux/gptSlice";
 import { setLanguage } from "../redux/configSlice";
+import language from "../utils/languageConstants";
 
 const Header = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const langId = useSelector((store) => store.config.language);
+  const inGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const [isScrolled, setIsScrolled] = useState(false);
 
   // This is called when the user signs out, will redirect user to home page
@@ -80,11 +83,26 @@ const Header = (props) => {
         <div className="absolute z-30 flex justify-between w-full px-3 py-2">
           <img className="w-52" alt="logo" src={LOGO_URL} />
           <div>
+            <select
+              name="language"
+              className="bg-black m-3 px-4 h-10 text-white rounded-md"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES?.map((lang) => (
+                <option
+                  key={lang.identifier}
+                  value={lang.identifier}
+                  selected={langId === lang.identifier}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
             <button
               className="px-6 mx-10 my-4 font-medium text-lg text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-10"
               onClick={() => navigate("/login")}
             >
-              Sign In
+              {language[langId].signIn}
             </button>
           </div>
         </div>
@@ -94,6 +112,21 @@ const Header = (props) => {
           <Link to="/">
             <img className="w-52" alt="logo" src={LOGO_URL} />
           </Link>
+          <select
+            name="language"
+            className="bg-gray-800 my-3 mx-20 px-4 h-10 text-white rounded-md"
+            onChange={handleLanguageChange}
+          >
+            {SUPPORTED_LANGUAGES?.map((lang) => (
+              <option
+                key={lang.identifier}
+                value={lang.identifier}
+                selected={langId === lang.identifier}
+              >
+                {lang.name}
+              </option>
+            ))}
+          </select>
         </div>
       )}
       {!props.home && user && (
@@ -117,7 +150,11 @@ const Header = (props) => {
                 onChange={handleLanguageChange}
               >
                 {SUPPORTED_LANGUAGES?.map((lang) => (
-                  <option key={lang.identifier} value={lang.identifier}>
+                  <option
+                    key={lang.identifier}
+                    value={lang.identifier}
+                    selected={langId === lang.identifier}
+                  >
                     {lang.name}
                   </option>
                 ))}
@@ -126,7 +163,9 @@ const Header = (props) => {
                 className="px-4 p-2 mx-6 my-3 min-w-fit h-10 font-medium text-white text-md bg-purple-800 rounded-md cursor-pointer"
                 onClick={handleGptSearchBtn}
               >
-                GPT Search
+                {inGptSearch
+                  ? language[langId].homepage
+                  : language[langId].gptSearch}
               </button>
               <img
                 className="mx-2 my-3 w-11 h-10 rounded-md"
@@ -137,7 +176,7 @@ const Header = (props) => {
                 className="px-4 pt-1 pb-3 mx-2 my-3 min-w-fit h-10 font-medium text-white text-lg bg-red-600 rounded-md cursor-pointer"
                 onClick={handleSignOut}
               >
-                Sign Out
+                {language[langId].signOut}
               </button>
             </div>
           )}

@@ -2,9 +2,12 @@ import React from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { BACKGROUND_URL_SMALL } from "../utils/constants";
+import language from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const navigate = useNavigate();
+  const langId = useSelector((store) => store.config.language);
 
   return (
     <div className="relative">
@@ -27,11 +30,11 @@ const Home = () => {
       >
         <div>
           <h1 className="font-bold text-5xl">
-            Unlimited Movies, TV Series and more
+            {language[langId].homePageMainHeader}
           </h1>
-          <h2 className="m-2 text-3xl">Watch anywhere. Cancel at any time.</h2>
+          <h2 className="m-2 text-3xl">{language[langId].homePageSubHeader}</h2>
           <button
-            className="py-3 px-8 m-3 min-w-fit font-medium text-xl text-white bg-red-600 rounded-md cursor-pointer"
+            className="py-3 px-8 m-3 min-w-[12rem] font-medium text-xl text-white bg-red-600 rounded-md cursor-pointer"
             onClick={() =>
               navigate("/login", {
                 state: {
@@ -40,7 +43,7 @@ const Home = () => {
               })
             }
           >
-            Get Started
+            {language[langId].getStarted}
           </button>
         </div>
       </div>

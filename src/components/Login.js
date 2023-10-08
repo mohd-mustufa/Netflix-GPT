@@ -8,15 +8,17 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser } from "../redux/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BACKGROUND_URL_LARGE, DEFAULT_AVATAR } from "../utils/constants";
 import { useLocation } from "react-router-dom";
+import language from "../utils/languageConstants";
 
 const Login = () => {
   const location = useLocation();
   const alreadyRegistered = location.state?.home ? false : true;
   const [isSignInForm, setIsSignInForm] = useState(alreadyRegistered);
   const [errorMessage, setErrorMessage] = useState(null);
+  const langId = useSelector((store) => store.config.language);
 
   const email = useRef("");
   const password = useRef("");
@@ -114,14 +116,14 @@ const Login = () => {
           className="mx-auto my-36 px-16 py-10 w-[450px] h-[500px] absolute right-0 left-0 bg-black bg-opacity-80 text-white rounded-lg"
         >
           <h1 className="my-5 text-4xl font-medium">
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {isSignInForm ? language[langId].signIn : language[langId].signUp}
           </h1>
 
           {!isSignInForm && (
             <input
               className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
               type="text"
-              placeholder="Full Name"
+              placeholder={language[langId].fullName}
               name="name"
               ref={name}
             />
@@ -129,14 +131,14 @@ const Login = () => {
           <input
             className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
             type="text"
-            placeholder="Email Address"
+            placeholder={language[langId].emailAddress}
             name="email"
             ref={email}
           />
           <input
             className="w-full px-4 py-3 my-2 bg-neutral-700 rounded-s rounded-e"
             type="password"
-            placeholder="Password"
+            placeholder={language[langId].password}
             name="password"
             ref={password}
           />
@@ -147,17 +149,21 @@ const Login = () => {
             className="w-full px-4 py-4 my-4 bg-red-600 rounded-s rounded-e"
             onClick={handleFormData}
           >
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {isSignInForm ? language[langId].signIn : language[langId].signUp}
           </button>
 
           <span className="text-neutral-500">
-            {isSignInForm ? "New to Netflix? " : "Already Registered? "}
+            {isSignInForm
+              ? language[langId].newToNetflix
+              : language[langId].alreadyRegistered}
           </span>
           <button
             className="cursor-pointer hover:underline"
             onClick={toggleSignInForm}
           >
-            {isSignInForm ? "Sign Up now." : "Sign In now."}
+            {isSignInForm
+              ? language[langId].signUpNow
+              : language[langId].signInNow}
           </button>
         </form>
       </div>
