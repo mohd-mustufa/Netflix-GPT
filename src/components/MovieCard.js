@@ -2,6 +2,8 @@ import React from "react";
 import { MOVIE_POSTER_URL } from "../utils/constants";
 
 const MovieCard = ({ poster }) => {
+  if (!poster) return;
+
   return (
     <div className="w-52 relative mr-4">
       <img

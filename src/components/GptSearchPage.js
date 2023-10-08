@@ -6,7 +6,7 @@ import { BACKGROUND_URL_LARGE, BACKGROUND_URL_SMALL } from "../utils/constants";
 const GptSearchPage = () => {
   return (
     <div>
-      <div className="absolute -z-10 h-screen w-screen">
+      <div className="fixed -z-10 h-screen w-screen">
         <img
           alt="background"
           src={BACKGROUND_URL_LARGE}
