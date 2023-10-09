@@ -34,17 +34,21 @@ const GptSearchBar = () => {
 
     // const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ");
     const gptMovies = [
-      "Andaz Apna Apna",
-      "Hera Pheri",
-      "Chupke Chupke",
-      "Jaane Bhi Do Yaaro",
-      "Padosan",
+      "slkadjflksdjf",
+      "Wonder Woman",
+      "Avengers",
+      "Zindagi Na Milegi",
+      "Pursuit Of Happiness",
     ];
     const promiseArr = gptMovies.map((movie) => getMovieDataFromApi(movie));
     const apiResults = await Promise.all(promiseArr);
 
     dispatch(
-      addGptMovieResults({ movieNames: gptMovies, movieResults: apiResults })
+      addGptMovieResults({
+        movieNames: gptMovies,
+        movieResults: apiResults,
+        gptSearchText: searchText.current.value,
+      })
     );
   };
 
