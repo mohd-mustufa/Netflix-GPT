@@ -82,12 +82,12 @@ const Header = (props) => {
   return (
     <>
       {props?.home && (
-        <div className="absolute z-30 flex justify-between w-full px-3 py-2">
-          <img className="w-52" alt="logo" src={LOGO_URL} />
-          <div>
+        <div className="absolute z-30 flex justify-between w-full px-2 md:px-3 py-1 md:py-2">
+          <img className="w-28 md:w-52" alt="logo" src={LOGO_URL} />
+          <div className="flex md:block">
             <select
               name="language"
-              className="bg-black m-3 px-4 h-10 text-white rounded-md"
+              className="bg-zinc-900 md:bg-black mx-2 my-2 md:m-3 px-1 md:px-4 h-10 text-white rounded-md"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES?.map((lang) => (
@@ -101,7 +101,7 @@ const Header = (props) => {
               ))}
             </select>
             <button
-              className="px-6 mx-10 my-4 font-medium text-lg text-white bg-red-600 rounded-md cursor-pointer min-w-fit h-10"
+              className="px-2 md:px-6 mx-2 md:mx-10 my-2 md:my-4 font-medium md:text-lg text-white bg-red-600 rounded-md cursor-pointer max-w-[70px] md:max-w-full md:min-w-fit h-15 md:h-10"
               onClick={() => navigate("/login")}
             >
               {language[langId].signIn}
@@ -112,11 +112,11 @@ const Header = (props) => {
       {!props.home && !user && (
         <div className="absolute z-30 flex justify-between w-full px-3 py-2 bg-gradient-to-b from-black">
           <Link to="/">
-            <img className="w-52" alt="logo" src={LOGO_URL} />
+            <img className="w-32 md:w-52" alt="logo" src={LOGO_URL} />
           </Link>
           <select
             name="language"
-            className="bg-gray-800 my-3 mx-20 px-4 h-10 text-white rounded-md"
+            className="bg-gray-800 my-2 md:my-3 md:mx-20 px-2 md:px-4 h-9 md:h-10 text-white rounded-md"
             onChange={handleLanguageChange}
           >
             {SUPPORTED_LANGUAGES?.map((lang) => (
@@ -133,7 +133,7 @@ const Header = (props) => {
       )}
       {!props.home && user && (
         <div
-          className={`z-30 flex justify-between w-full px-11 py-2 bg-gradient-to-b from-black fixed top-0 left-0 " 
+          className={`z-30 flex flex-col md:flex-row md:justify-between w-full px-11 py-2 bg-gradient-to-b from-black fixed top-0 left-0 " 
             ${
               isScrolled
                 ? "bg-black transition duration-700"
@@ -142,13 +142,17 @@ const Header = (props) => {
           `}
         >
           <Link to="/browse">
-            <img className="w-36" alt="logo" src={LOGO_URL} />
+            <img
+              className="mx-auto md:mx-0 -my-3 md:my-0 w-32 md:w-36"
+              alt="logo"
+              src={LOGO_URL}
+            />
           </Link>
           {user && (
-            <div className="flex">
+            <div className="flex justify-center md:justify-end">
               <select
                 name="language"
-                className="bg-zinc-800 m-3 px-4 py-2 text-white rounded-md"
+                className="bg-zinc-800 mb-4 mt-3 md:m-3 px-2 md:px-4 py-1 md:py-2 text-white rounded-md text-[13px] md:text-base"
                 onChange={handleLanguageChange}
               >
                 {SUPPORTED_LANGUAGES?.map((lang) => (
@@ -162,7 +166,7 @@ const Header = (props) => {
                 ))}
               </select>
               <button
-                className="px-4 p-2 mx-6 my-3 min-w-fit h-10 font-medium text-white text-md bg-purple-800 rounded-md cursor-pointer"
+                className="px-3 md:px-4 py-1 md:py-2 mx-6 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-base bg-purple-800 rounded-md cursor-pointer"
                 onClick={handleGptSearchBtn}
               >
                 {inGptSearch
@@ -170,12 +174,12 @@ const Header = (props) => {
                   : language[langId].gptSearch}
               </button>
               <img
-                className="mx-2 my-3 w-11 h-10 rounded-md"
+                className="mx-2 my-3 w-11 h-10 rounded-md hidden md:block"
                 src={user?.photoURL}
                 alt="profile-img"
               />
               <button
-                className="px-4 pt-1 pb-3 mx-2 my-3 min-w-fit h-10 font-medium text-white text-lg bg-red-600 rounded-md cursor-pointer"
+                className="px-3 md:px-4 md:pt-1 md:pb-3 md:mx-2 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-lg bg-red-600 rounded-md cursor-pointer"
                 onClick={handleSignOut}
               >
                 {language[langId].signOut}

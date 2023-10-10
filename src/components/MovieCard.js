@@ -5,9 +5,9 @@ const MovieCard = ({ poster }) => {
   if (!poster) return;
 
   return (
-    <div className="w-52 relative">
+    <div className="w-36 md:w-52 relative">
       <img
-        className="rounded-md cursor-pointer max-h-[300px]"
+        className="rounded-md cursor-pointer max-h-[200px] md:max-h-[300px]"
         src={MOVIE_POSTER_URL + poster}
         alt="movie poster"
       />

@@ -15,10 +15,10 @@ const GptMovieSuggestions = () => {
         </div>
       ) : (
         <>
-          <div className="text-white text-2xl font-bold mt-6 text-center p-4 bg-black bg-opacity-90 w-full">
+          <div className="text-white text-xl md:text-3xl font-bold mx-4 md:mx-6 mt-4 md:mt-6 text-center px-4 pt-4 bg-black bg-opacity-90 w-[11/12]">
             Search Results For: {gptSearchText}
           </div>
-          <div className="m-6 mt-0 pl-2 pr-10 py-4 bg-black bg-opacity-90">
+          <div className="m-4 md:m-6 mt-0 md:mt-0 pl-2 pr-10 py-4 bg-black bg-opacity-90">
             {movieNames.map(
               (movieName, index) =>
                 movieResults[index].length !== 0 && (

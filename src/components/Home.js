@@ -14,7 +14,7 @@ const Home = () => {
       <div>
         <Header home={true} />
       </div>
-      <div className="absolute z-10 h-screen w-screen">
+      <div className="fixed z-10 h-screen w-screen">
         <img
           alt="background"
           src={BACKGROUND_URL_SMALL}
@@ -29,10 +29,12 @@ const Home = () => {
         className="absolute w-screen h-screen z-20 flex flex-col justify-center text-center text-white"
       >
         <div>
-          <h1 className="font-bold text-5xl">
+          <h1 className="m-2 font-bold text-3xl md:text-5xl">
             {language[langId].homePageMainHeader}
           </h1>
-          <h2 className="m-2 text-3xl">{language[langId].homePageSubHeader}</h2>
+          <h2 className="m-2 text-xl md:text-3xl">
+            {language[langId].homePageSubHeader}
+          </h2>
           <button
             className="py-3 px-8 m-3 min-w-[12rem] font-medium text-xl text-white bg-red-600 rounded-md cursor-pointer"
             onClick={() =>
