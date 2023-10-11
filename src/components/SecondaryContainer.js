@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
   const langId = useSelector((store) => store.config.language);
 
   return (
-    <div className="-mt-48 bg-black">
+    <div className="md:-mt-48 bg-black">
       <div className="w-full h-40 absolute bottom-0 bg-gradient-to-t from-black"></div>
       <MovieList
         title={language[langId].newReleases}
