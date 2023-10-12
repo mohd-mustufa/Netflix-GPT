@@ -25,14 +25,14 @@ const GptSearchBar = () => {
     const gptQuery =
       "Act as a movie/tv series recommendation system and suggest some movies/tv series for the query: " +
       searchText.current.value +
-      ". Only give me names of 5 movies/tv series, comma seperated like the example result given ahead. Example Result: Shawshank Redemption, The Godfather, Narcos, Aquaman, Avengers. If you cannot find any movies/tv series to suggest based on the query then give me names of any 5 movies that I might like. In this case the first word of your result should be 'No gpt result' followed by 5 comma separated movie names like the example result given ahead. Example result: No gpt result, movie1, movie2, movie3, movie4, movie5";
+      ". Only give me names of 5 movies/tv series, with a seperator like the example result given ahead. Example Result: Shawshank Redemption; The Godfather; Narcos; Aquaman; Avengers. If you cannot find any movies/tv series to suggest based on the query then give me names of any 5 movies that I might like. In this case the first word of your result should be 'No gpt result' followed by 5 comma separated movie names like the example result given ahead. Example result: No gpt result; movie1; movie2; movie3; movie4; movie5";
 
     const gptResults = await openai.chat.completions.create({
       messages: [{ role: "user", content: gptQuery }],
       model: "gpt-3.5-turbo",
     });
 
-    const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ");
+    const gptMovies = gptResults.choices?.[0]?.message?.content.split("; ");
     const promiseArr = gptMovies.map((movie) => getMovieDataFromApi(movie));
     const apiResults = await Promise.all(promiseArr);
 
