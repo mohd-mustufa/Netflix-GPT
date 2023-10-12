@@ -12,7 +12,7 @@ const GptSearchBar = () => {
 
   const getMovieDataFromApi = async (movieName) => {
     const url =
-      "https://api.themoviedb.org/3/search/movie?query=" +
+      "https://api.themoviedb.org/3/search/multi?query=" +
       movieName +
       "&include_adult=false&language=en-US&page=1";
 
@@ -23,23 +23,16 @@ const GptSearchBar = () => {
 
   const handleGptSearchClick = async () => {
     const gptQuery =
-      "Act as a movie recommendation system and suggest some movies for the query: " +
+      "Act as a movie/tv series recommendation system and suggest some movies/tv series for the query: " +
       searchText.current.value +
-      ". Only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Shawshank Redemption, The Godfather, Spiderman, Aquaman, Avengers";
+      ". Only give me names of 5 movies/tv series, comma seperated like the example result given ahead. Example Result: Shawshank Redemption, The Godfather, Narcos, Aquaman, Avengers. If you cannot find any movies/tv series to suggest based on the query then give me names of any 5 movies that I might like. In this case the first word of your result should be 'No gpt result' followed by 5 comma separated movie names like the example result given ahead. Example result: No gpt result, movie1, movie2, movie3, movie4, movie5";
 
-    // const gptResults = await openai.chat.completions.create({
-    //   messages: [{ role: "user", content: gptQuery }],
-    //   model: "gpt-3.5-turbo",
-    // });
+    const gptResults = await openai.chat.completions.create({
+      messages: [{ role: "user", content: gptQuery }],
+      model: "gpt-3.5-turbo",
+    });
 
-    // const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ");
-    const gptMovies = [
-      "slkadjflksdjf",
-      "Wonder Woman",
-      "Avengers",
-      "Zindagi Na Milegi",
-      "Pursuit Of Happiness",
-    ];
+    const gptMovies = gptResults.choices?.[0]?.message?.content.split(", ");
     const promiseArr = gptMovies.map((movie) => getMovieDataFromApi(movie));
     const apiResults = await Promise.all(promiseArr);
 
@@ -48,6 +41,7 @@ const GptSearchBar = () => {
         movieNames: gptMovies,
         movieResults: apiResults,
         gptSearchText: searchText.current.value,
+        noResult: gptMovies[0] === "No gpt result" ? true : false,
       })
     );
   };

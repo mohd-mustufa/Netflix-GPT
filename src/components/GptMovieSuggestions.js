@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 
 const GptMovieSuggestions = () => {
-  const { movieNames, movieResults, gptSearchText } = useSelector(
+  const { movieNames, movieResults, gptSearchText, noResult } = useSelector(
     (store) => store.gpt
   );
   if (!movieNames) return;
@@ -16,7 +16,11 @@ const GptMovieSuggestions = () => {
       ) : (
         <>
           <div className="text-white text-xl md:text-3xl font-bold mx-4 md:mx-6 mt-4 md:mt-6 text-center px-4 pt-4 bg-black bg-opacity-90 w-[11/12]">
-            Search Results For: {gptSearchText}
+            {noResult
+              ? "Your search for '" +
+                gptSearchText +
+                "' did not find any matches. However, here are similar suggestions you might like:"
+              : "Search Results For: " + gptSearchText}
           </div>
           <div className="m-4 md:m-6 mt-0 md:mt-0 pl-2 pr-10 py-4 bg-black bg-opacity-90">
             {movieNames.map(
