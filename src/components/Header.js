@@ -89,13 +89,10 @@ const Header = (props) => {
               name="language"
               className="bg-zinc-900 md:bg-black mx-2 my-2 md:m-3 px-1 md:px-4 h-10 text-white rounded-md"
               onChange={handleLanguageChange}
+              value={langId}
             >
               {SUPPORTED_LANGUAGES?.map((lang) => (
-                <option
-                  key={lang.identifier}
-                  value={lang.identifier}
-                  selected={langId === lang.identifier}
-                >
+                <option key={lang.identifier} value={lang.identifier}>
                   {lang.name}
                 </option>
               ))}
@@ -118,13 +115,10 @@ const Header = (props) => {
             name="language"
             className="bg-gray-800 my-2 md:my-3 md:mx-20 px-2 md:px-4 h-9 md:h-10 text-white rounded-md"
             onChange={handleLanguageChange}
+            value={langId}
           >
             {SUPPORTED_LANGUAGES?.map((lang) => (
-              <option
-                key={lang.identifier}
-                value={lang.identifier}
-                selected={langId === lang.identifier}
-              >
+              <option key={lang.identifier} value={lang.identifier}>
                 {lang.name}
               </option>
             ))}
@@ -154,13 +148,10 @@ const Header = (props) => {
                 name="language"
                 className="bg-zinc-800 mb-4 mt-3 md:m-3 px-2 md:px-4 py-1 md:py-2 text-white rounded-md text-[13px] md:text-base"
                 onChange={handleLanguageChange}
+                value={langId}
               >
                 {SUPPORTED_LANGUAGES?.map((lang) => (
-                  <option
-                    key={lang.identifier}
-                    value={lang.identifier}
-                    selected={langId === lang.identifier}
-                  >
+                  <option key={lang.identifier} value={lang.identifier}>
                     {lang.name}
                   </option>
                 ))}
