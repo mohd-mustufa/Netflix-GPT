@@ -12,7 +12,6 @@ const useTopRatedSeries = () => {
   const getTopRatedSeries = async () => {
     const data = await fetch(TOP_RATED_SERIES_URL, API_OPTIONS);
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addTopRatedSeries(jsonData.results));
   };
 

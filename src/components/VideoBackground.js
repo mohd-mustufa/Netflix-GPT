@@ -11,48 +11,10 @@ const VideoBackground = ({ movieId }) => {
   );
   const [showVideo, setShowVideo] = useState(true);
 
-  // This will change the video screen to a photo screen after 2.5minutes
-  // Hack to remove the youtube auto-suggestions at the end of video
-  // let timer = setTimeout(() => {
-  //   console.log("executing timeout");
-  //   setShowVideo(false);
-  // }, 10000);
-
   // Store the trailer data of the main movie to the store
   useMovieTrailer(movieId);
 
   useEffect(() => {
-    // let timeoutId;
-    // if (window.innerWidth < 768) {
-    //   setShowVideo(0);
-    //   console.log("initial small: " + showVideo);
-    // } else {
-    //   setShowVideo(1);
-    //   console.log("initial big: " + showVideo);
-    //   timeoutId = setTimeout(() => {
-    //     setShowVideo(0);
-    //     console.log("timeout initial executed: " + timeoutId);
-    //   }, 140000);
-    //   console.log("timeout initial created: " + timeoutId);
-    // }
-
-    // const handleResize = () => {
-    //   if (showVideo && window.innerWidth < 768) {
-    //     setShowVideo(0);
-    //     console.log("later small: " + showVideo);
-    //     clearTimeout(timeoutId);
-    //     console.log("timeout cleared less height: " + timeoutId + showVideo);
-    //   } else if (!showVideo && window.innerWidth >= 768) {
-    //     setShowVideo(1);
-    //     console.log("later big: " + showVideo);
-    //     timeoutId = setTimeout(() => {
-    //       setShowVideo(0);
-    //       console.log("timeout executed more height: " + timeoutId);
-    //     }, 140000);
-    //     console.log("timeout created more height: " + timeoutId);
-    //     console.log(showVideo);
-    //   }
-    // };
     // This will change the video screen to a photo screen after 2.5minutes
     // Hack to remove the youtube auto-suggestions at the end of video
     let timer = setTimeout(() => {

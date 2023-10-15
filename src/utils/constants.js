@@ -30,13 +30,13 @@ export const TOP_RATED_MOVIES_URL =
   "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 
 export const SERIES_AIRING_TODAY_URL =
-  "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
+  "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&without_genres=16";
 
 export const POPULAR_SERIES_URL =
-  "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1";
+  "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=16";
 
 export const TOP_RATED_SERIES_URL =
-  "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1";
+  "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&without_genres=16";
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
