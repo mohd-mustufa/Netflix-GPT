@@ -44,7 +44,7 @@ export const MOVIE_GENRE_LIST_URL =
 export const MOVIES_BY_GENRE_URL =
   "https://api.themoviedb.org/3/discover/movie?api_key=" +
   process.env.REACT_APP_TMDB_KEY +
-  "&with_genres=";
+  "&page=2&with_genres=";
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },

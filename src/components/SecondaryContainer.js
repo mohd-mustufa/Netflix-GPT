@@ -12,30 +12,67 @@ const SecondaryContainer = () => {
   return (
     <div className="md:-mt-48 bg-black">
       <div className="hidden md:block w-full h-40 absolute bottom-0 bg-gradient-to-t from-black"></div>
-      <MovieList
-        title={language[langId].newReleases}
-        movies={movies?.nowPlayingMovies}
-      />
-      <MovieList
-        title={language[langId].airingToday}
-        movies={tvSeries?.seriesAiringToday}
-      />
-      <MovieList
-        title={language[langId].trendingNow}
-        movies={movies?.popularMovies}
-      />
-      <MovieList
-        title={language[langId].topRatedMovies}
-        movies={movies?.topRatedMovies}
-      />
-      <MovieList
-        title={language[langId].popularTvSeries}
-        movies={tvSeries?.popularSeries}
-      />
-      <MovieList
-        title={language[langId].topRatedTvSeries}
-        movies={tvSeries?.topRatedSeries}
-      />
+      {path === "/browse" && (
+        <>
+          <MovieList
+            title={language[langId].newReleases}
+            movies={movies?.nowPlayingMovies}
+          />
+          <MovieList
+            title={language[langId].airingToday}
+            movies={tvSeries?.seriesAiringToday}
+          />
+          <MovieList
+            title={language[langId].trendingNow}
+            movies={movies?.popularMovies}
+          />
+          <MovieList
+            title={language[langId].topRatedMovies}
+            movies={movies?.topRatedMovies}
+          />
+          <MovieList
+            title={language[langId].popularTvSeries}
+            movies={tvSeries?.popularSeries}
+          />
+          <MovieList
+            title={language[langId].topRatedTvSeries}
+            movies={tvSeries?.topRatedSeries}
+          />
+        </>
+      )}
+      {path === "/browse/movies" && (
+        <>
+          <MovieList
+            title={language[langId].trendingNow}
+            movies={movies?.popularMovies}
+          />
+          <MovieList
+            title={language[langId].actionMovies}
+            movies={movies?.moviesByGenre?.Action}
+          />
+          <MovieList
+            title={language[langId].crimeThrillerShowdown}
+            movies={movies?.moviesByGenre?.Crime}
+          />
+          <MovieList
+            title={language[langId].fantasyMovies}
+            movies={movies?.moviesByGenre?.Fantasy}
+          />
+          <MovieList
+            title={language[langId].horrorMovies}
+            movies={movies?.moviesByGenre?.Horror}
+          />
+          <MovieList
+            title={language[langId].thrillerMovies}
+            movies={movies?.moviesByGenre?.Thriller}
+          />
+          <MovieList
+            title={language[langId].familyDrama}
+            movies={movies?.moviesByGenre?.Family}
+          />
+        </>
+      )}
+      {path === "/browse/tv" && <></>}
     </div>
   );
 };
