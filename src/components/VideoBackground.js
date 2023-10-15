@@ -61,7 +61,7 @@ const VideoBackground = ({ movieId }) => {
       )}
       {!showVideo && (
         <img
-          className="w-full max-h-screen aspect-video"
+          className="w-full max-h-screen min-h-[250px] aspect-video"
           src={"https://image.tmdb.org/t/p/original/" + movie?.backdrop_path}
           alt="poster"
         ></img>

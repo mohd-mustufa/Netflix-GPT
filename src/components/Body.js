@@ -20,6 +20,14 @@ const Body = () => {
       element: <Browse />,
     },
     {
+      path: "/browse/movies",
+      element: <Browse />,
+    },
+    {
+      path: "/browse/tv",
+      element: <Browse />,
+    },
+    {
       path: "*",
       element: <ErrorPage />,
     },

@@ -38,6 +38,14 @@ export const POPULAR_SERIES_URL =
 export const TOP_RATED_SERIES_URL =
   "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&without_genres=16";
 
+export const MOVIE_GENRE_LIST_URL =
+  "https://api.themoviedb.org/3/genre/movie/list?language=en";
+
+export const MOVIES_BY_GENRE_URL =
+  "https://api.themoviedb.org/3/discover/movie?api_key=" +
+  process.env.REACT_APP_TMDB_KEY +
+  "&with_genres=";
+
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hi", name: "हिंदी" },

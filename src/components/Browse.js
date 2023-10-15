@@ -9,17 +9,19 @@ import GptSearchPage from "./GptSearchPage";
 import useSeriesAiringToday from "../hooks/useSeriesAiringToday";
 import usePopularSeries from "../hooks/usePopularSeries";
 import useTopRatedSeries from "../hooks/useTopRatedSeries";
+import useMoviesByGenre from "../hooks/useMoviesByGenre";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-  // Store the movies data to the store
+  // Store the movies & TV Series data to the store
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useSeriesAiringToday();
   usePopularSeries();
   useTopRatedSeries();
+  useMoviesByGenre();
 
   return (
     <div>

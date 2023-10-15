@@ -142,6 +142,26 @@ const Header = (props) => {
               src={LOGO_URL}
             />
           </Link>
+          <div className="flex absolute top-7 left-52">
+            <button
+              className="text-white mr-7"
+              onClick={() => navigate("/browse")}
+            >
+              Home
+            </button>
+            <button
+              className="text-white mr-7"
+              onClick={() => navigate("/browse/movies")}
+            >
+              Movies
+            </button>
+            <button
+              className="text-white"
+              onClick={() => navigate("/browse/tv")}
+            >
+              TV Series
+            </button>
+          </div>
           {user && (
             <div className="flex justify-center md:justify-end">
               <select

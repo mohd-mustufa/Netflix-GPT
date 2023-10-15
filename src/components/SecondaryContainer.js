@@ -7,6 +7,7 @@ const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
   const tvSeries = useSelector((store) => store.tvSeries);
   const langId = useSelector((store) => store.config.language);
+  const path = window.location.pathname;
 
   return (
     <div className="md:-mt-48 bg-black">
