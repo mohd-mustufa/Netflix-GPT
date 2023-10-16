@@ -1,23 +1,20 @@
 import { useSelector } from "react-redux";
-import useMovieTrailer from "../hooks/useMovieTrailer";
 import { useEffect, useState } from "react";
+import useTrailer from "../hooks/useTrailer";
 
-const VideoBackground = ({ movieId }) => {
-  const trailer = useSelector((store) => store.movies?.mainMovieTrailer);
-  const movie = useSelector((store) =>
-    store.movies?.nowPlayingMovies
-      ? store.movies.nowPlayingMovies[store.movies.nowPlayingMovies.length - 1]
-      : null
-  );
+const VideoBackground = ({ trailerId, backgroundPath }) => {
+  const trailerVideo = useSelector((store) => store.movies?.trailerVideoData);
   const [showVideo, setShowVideo] = useState(true);
 
-  // Store the trailer data of the main movie to the store
-  useMovieTrailer(movieId);
+  // Add the trailer data of the main movie to the store
+  useTrailer(trailerId);
 
   useEffect(() => {
     // This will change the video screen to a photo screen after 2.5minutes
     // Hack to remove the youtube auto-suggestions at the end of video
-    let timer = setTimeout(() => {
+    if (!trailerVideo?.key) setShowVideo(false);
+    else setShowVideo(true);
+    const timer = setTimeout(() => {
       setShowVideo(false);
       window.removeEventListener("resize", handleResize);
     }, 140000);
@@ -41,7 +38,7 @@ const VideoBackground = ({ movieId }) => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(timer);
     };
-  }, []);
+  }, [trailerVideo?.key]);
 
   return (
     <div>
@@ -51,7 +48,7 @@ const VideoBackground = ({ movieId }) => {
             className="w-full aspect-video"
             src={
               "https://www.youtube.com/embed/" +
-              trailer?.key +
+              trailerVideo?.key +
               "?&autoplay=1&mute=1"
             }
             title="YouTube video player"
@@ -62,7 +59,7 @@ const VideoBackground = ({ movieId }) => {
       {!showVideo && (
         <img
           className="w-full max-h-screen min-h-[250px] aspect-video"
-          src={"https://image.tmdb.org/t/p/original/" + movie?.backdrop_path}
+          src={"https://image.tmdb.org/t/p/original/" + backgroundPath}
           alt="poster"
         ></img>
       )}
