@@ -5,7 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/userSlice";
 import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
-import { addGptMovieResults, toggleGptSearchView } from "../redux/gptSlice";
+import {
+  addGptMovieResults,
+  setGptSearchFalse,
+  toggleGptSearchView,
+} from "../redux/gptSlice";
 import { setLanguage } from "../redux/configSlice";
 import language from "../utils/languageConstants";
 
@@ -14,7 +18,7 @@ const Header = (props) => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const langId = useSelector((store) => store.config.language);
-  const inGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const [isScrolled, setIsScrolled] = useState(false);
 
   // This is called when the user signs out, will redirect user to home page
@@ -30,7 +34,7 @@ const Header = (props) => {
 
   const handleGptSearchBtn = () => {
     dispatch(toggleGptSearchView());
-    if (inGptSearch)
+    if (showGptSearch)
       dispatch(addGptMovieResults({ movieNames: null, movieResults: null }));
   };
 
@@ -145,19 +149,28 @@ const Header = (props) => {
           <div className="flex absolute top-7 left-52">
             <button
               className="text-white mr-7"
-              onClick={() => navigate("/browse")}
+              onClick={() => {
+                navigate("/browse");
+                dispatch(setGptSearchFalse());
+              }}
             >
               Home
             </button>
             <button
               className="text-white mr-7"
-              onClick={() => navigate("/browse/movies")}
+              onClick={() => {
+                navigate("/browse/movies");
+                dispatch(setGptSearchFalse());
+              }}
             >
               Movies
             </button>
             <button
               className="text-white"
-              onClick={() => navigate("/browse/tv")}
+              onClick={() => {
+                navigate("/browse/tv");
+                dispatch(setGptSearchFalse());
+              }}
             >
               TV Series
             </button>
@@ -180,7 +193,7 @@ const Header = (props) => {
                 className="px-3 md:px-4 py-1 md:py-2 mx-6 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-base bg-purple-800 rounded-md cursor-pointer"
                 onClick={handleGptSearchBtn}
               >
-                {inGptSearch
+                {showGptSearch
                   ? language[langId].homepage
                   : language[langId].gptSearch}
               </button>

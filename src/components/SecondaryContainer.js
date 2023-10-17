@@ -72,7 +72,38 @@ const SecondaryContainer = () => {
           />
         </>
       )}
-      {path === "/browse/tv" && <></>}
+      {path === "/browse/tv" && (
+        <>
+          <MovieList
+            title={language[langId].popularTvSeries}
+            movies={tvSeries?.popularSeries}
+          />
+          <MovieList
+            title={language[langId].sitcoms}
+            movies={tvSeries?.tvSeriesByGenre?.Comedy}
+          />
+          <MovieList
+            title={language[langId].crimeChronicles}
+            movies={tvSeries?.tvSeriesByGenre?.Crime}
+          />
+          <MovieList
+            title={language[langId].dramaSeries}
+            movies={tvSeries?.tvSeriesByGenre?.Drama}
+          />
+          <MovieList
+            title={language[langId].realityTvShows}
+            movies={tvSeries?.tvSeriesByGenre?.Reality}
+          />
+          <MovieList
+            title={language[langId].soapOperas}
+            movies={tvSeries?.tvSeriesByGenre?.Soap}
+          />
+          <MovieList
+            title={language[langId].talkShows}
+            movies={tvSeries?.tvSeriesByGenre?.Talk}
+          />
+        </>
+      )}
     </div>
   );
 };

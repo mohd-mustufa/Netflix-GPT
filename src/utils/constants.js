@@ -46,6 +46,14 @@ export const MOVIES_BY_GENRE_URL =
   process.env.REACT_APP_TMDB_KEY +
   "&page=2&with_genres=";
 
+export const TV_SERIES_GENRE_LIST_URL =
+  "https://api.themoviedb.org/3/genre/tv/list?language=en";
+
+export const TV_SERIES_BY_GENRE_URL =
+  "https://api.themoviedb.org/3/discover/tv?api_key=" +
+  process.env.REACT_APP_TMDB_KEY +
+  "&page=2&without_genres=16&with_genres=";
+
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hi", name: "हिंदी" },
