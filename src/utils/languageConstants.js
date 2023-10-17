@@ -35,6 +35,9 @@ const languageConstants = {
     realityTvShows: "Reality TV Shows",
     soapOperas: "Soap Operas",
     talkShows: "Talk Shows",
+    home: "Home",
+    movies: "Movies",
+    tvSeries: "TV Series",
   },
   hi: {
     getStarted: "शुरू हो जाओ",
@@ -72,6 +75,9 @@ const languageConstants = {
     realityTvShows: "रियलिटी टीवी शो",
     soapOperas: "धारावाहिकों",
     talkShows: "चर्चा दर्शवितें",
+    home: "घर",
+    movies: "चलचित्र",
+    tvSeries: "टीवी श्रृंखला",
   },
   kn: {
     getStarted: "ಪ್ರಾರಂಭಿಸಿ",
@@ -109,6 +115,9 @@ const languageConstants = {
     realityTvShows: "ರಿಯಾಲಿಟಿ ಟಿವಿ ಶೋಗಳು",
     soapOperas: "ಧಾರವಾಹಿಗಳನ್ನು",
     talkShows: "ಟಾಕ್ ಶೋಗಳು",
+    home: "ಮುಖಪುಟ",
+    movies: "ಚಲನಚಿತ್ರಗಳು",
+    tvSeries: "ಧಾರವಾಹಿ",
   },
   es: {
     getStarted: "Empezar",
@@ -147,6 +156,9 @@ const languageConstants = {
     realityTvShows: "Programas de televisión de la vida real",
     soapOperas: "Telenovelas",
     talkShows: "Programas de entrevistas",
+    home: "Hogar",
+    movies: "Películas",
+    tvSeries: "Series de TV",
   },
 };
 

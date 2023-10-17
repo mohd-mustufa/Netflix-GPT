@@ -154,7 +154,7 @@ const Header = (props) => {
                 dispatch(setGptSearchFalse());
               }}
             >
-              Home
+              {language[langId].home}
             </button>
             <button
               className="text-white mr-7"
@@ -163,7 +163,7 @@ const Header = (props) => {
                 dispatch(setGptSearchFalse());
               }}
             >
-              Movies
+              {language[langId].movies}
             </button>
             <button
               className="text-white"
@@ -172,7 +172,7 @@ const Header = (props) => {
                 dispatch(setGptSearchFalse());
               }}
             >
-              TV Series
+              {language[langId].tvSeries}
             </button>
           </div>
           {user && (
