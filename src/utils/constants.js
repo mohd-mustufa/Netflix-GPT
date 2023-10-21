@@ -18,7 +18,7 @@ export const API_OPTIONS = {
   },
 };
 
-export const MOVIE_POSTER_URL = "https://image.tmdb.org/t/p/w200/";
+export const MOVIE_POSTER_URL = "https://image.tmdb.org/t/p/w200";
 
 export const NOW_PLAYING_MOVIES_URL =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
