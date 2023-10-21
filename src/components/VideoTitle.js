@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import language from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 
 const VideoTitle = ({ title, name, description }) => {
   const navigate = useNavigate();
+  const langId = useSelector((store) => store.config.language);
+
   return (
     <div className="pt-[30%] md:pt-[19%] px-4 md:px-12 absolute text-white">
       <h1 className="text-2xl md:text-5xl font-bold text-shadow md:text-shadow-sm shadow-black">
@@ -28,7 +32,7 @@ const VideoTitle = ({ title, name, description }) => {
               fill="currentColor"
             ></path>
           </svg>
-          Play
+          {language[langId].play}
         </button>
         <button className="bg-gray-500 px-2 md:px-8 py-1 md:py-2 md:pb-3 ml-2 rounded-md font-medium text-sm md:text-xl bg-opacity-70 hover:bg-opacity-50">
           <svg className="w-6 h-6 hidden md:inline mr-2">
@@ -43,7 +47,7 @@ const VideoTitle = ({ title, name, description }) => {
               fill="currentColor"
             ></path>
           </svg>
-          More Info
+          {language[langId].moreInfo}
         </button>
       </div>
     </div>

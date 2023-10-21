@@ -141,14 +141,18 @@ const Header = (props) => {
         >
           <Link to="/browse">
             <img
-              className="mx-auto md:mx-0 -my-3 md:my-0 w-32 md:w-36"
+              className="-ml-10 md:mx-0 -my-2 md:my-0 w-32 md:w-36"
               alt="logo"
               src={LOGO_URL}
+              onClick={() => {
+                navigate("/browse");
+                dispatch(setGptSearchFalse());
+              }}
             />
           </Link>
-          <div className="flex absolute top-7 left-52">
+          <div className="flex absolute top-4 md:top-7 right-2 md:right-auto md:left-52">
             <button
-              className="text-white mr-7"
+              className="text-white mr-4 md:mr-7 hidden md:block"
               onClick={() => {
                 navigate("/browse");
                 dispatch(setGptSearchFalse());
@@ -157,7 +161,7 @@ const Header = (props) => {
               {language[langId].home}
             </button>
             <button
-              className="text-white mr-7"
+              className="text-white mr-4 md:mr-7"
               onClick={() => {
                 navigate("/browse/movies");
                 dispatch(setGptSearchFalse());
@@ -166,7 +170,7 @@ const Header = (props) => {
               {language[langId].movies}
             </button>
             <button
-              className="text-white"
+              className="text-white mr-4 md:mr-7"
               onClick={() => {
                 navigate("/browse/tv");
                 dispatch(setGptSearchFalse());
@@ -174,42 +178,59 @@ const Header = (props) => {
             >
               {language[langId].tvSeries}
             </button>
+            <button
+              className="text-white mr-4 md:mr-7"
+              onClick={() => {
+                navigate("/browse");
+                dispatch(setGptSearchFalse());
+              }}
+            >
+              {language[langId].myList}
+            </button>
+            <button
+              className="text-white"
+              onClick={() => {
+                navigate("/browse/tv");
+                dispatch(setGptSearchFalse());
+              }}
+            >
+              {language[langId].search}
+            </button>
           </div>
-          {user && (
-            <div className="flex justify-center md:justify-end">
-              <select
-                name="language"
-                className="bg-zinc-800 mb-4 mt-3 md:m-3 px-2 md:px-4 py-1 md:py-2 text-white rounded-md text-[13px] md:text-base"
-                onChange={handleLanguageChange}
-                value={langId}
-              >
-                {SUPPORTED_LANGUAGES?.map((lang) => (
-                  <option key={lang.identifier} value={lang.identifier}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-              <button
-                className="px-3 md:px-4 py-1 md:py-2 mx-6 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-base bg-purple-800 rounded-md cursor-pointer"
-                onClick={handleGptSearchBtn}
-              >
-                {showGptSearch
-                  ? language[langId].homepage
-                  : language[langId].gptSearch}
-              </button>
-              <img
-                className="mx-2 my-3 w-11 h-10 rounded-md hidden md:block"
-                src={user?.photoURL}
-                alt="profile-img"
-              />
-              <button
-                className="px-3 md:px-4 md:pt-1 md:pb-3 md:mx-2 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-lg bg-red-600 rounded-md cursor-pointer"
-                onClick={handleSignOut}
-              >
-                {language[langId].signOut}
-              </button>
-            </div>
-          )}
+
+          <div className="flex justify-center md:justify-end">
+            <select
+              name="language"
+              className="bg-zinc-800 mb-4 mt-3 md:m-3 px-2 md:px-4 py-1 md:py-2 text-white rounded-md text-[13px] md:text-base"
+              onChange={handleLanguageChange}
+              value={langId}
+            >
+              {SUPPORTED_LANGUAGES?.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+            <button
+              className="px-3 md:px-4 py-1 md:py-2 mx-6 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-base bg-purple-800 rounded-md cursor-pointer"
+              onClick={handleGptSearchBtn}
+            >
+              {showGptSearch
+                ? language[langId].homepage
+                : language[langId].gptSearch}
+            </button>
+            <img
+              className="mx-2 my-3 w-11 h-10 rounded-md hidden md:block"
+              src={user?.photoURL}
+              alt="profile-img"
+            />
+            <button
+              className="px-3 md:px-4 md:pt-1 md:pb-3 md:mx-2 my-3 min-w-fit h-9 md:h-10 font-medium text-white text-sm md:text-lg bg-red-600 rounded-md cursor-pointer"
+              onClick={handleSignOut}
+            >
+              {language[langId].signOut}
+            </button>
+          </div>
         </div>
       )}
     </>

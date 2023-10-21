@@ -38,6 +38,9 @@ const languageConstants = {
     home: "Home",
     movies: "Movies",
     tvSeries: "TV Series",
+    myList: "My List",
+    play: "Play",
+    moreInfo: "More Info",
   },
   hi: {
     getStarted: "शुरू हो जाओ",
@@ -78,6 +81,9 @@ const languageConstants = {
     home: "घर",
     movies: "चलचित्र",
     tvSeries: "टीवी श्रृंखला",
+    myList: "मेरी सूची",
+    play: "खेल",
+    moreInfo: "और जानकारी",
   },
   kn: {
     getStarted: "ಪ್ರಾರಂಭಿಸಿ",
@@ -118,6 +124,9 @@ const languageConstants = {
     home: "ಮುಖಪುಟ",
     movies: "ಚಲನಚಿತ್ರಗಳು",
     tvSeries: "ಧಾರವಾಹಿ",
+    myList: "ನನ್ನ ಪಟ್ಟಿ",
+    play: "ಪ್ಲೇ ಮಾಡಿ",
+    moreInfo: "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ",
   },
   es: {
     getStarted: "Empezar",
@@ -159,6 +168,9 @@ const languageConstants = {
     home: "Hogar",
     movies: "Películas",
     tvSeries: "Series de TV",
+    myList: "Mi lista",
+    play: "Jugar",
+    moreInfo: "Más información",
   },
 };
 
