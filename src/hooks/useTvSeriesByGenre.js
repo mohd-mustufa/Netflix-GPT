@@ -23,7 +23,6 @@ const useTvSeriesByGenre = () => {
     jsonData.genres.forEach(
       (genre) => (genreList[genre.name] = genre.id.toString())
     );
-    console.log(genreList);
     return genreList;
   };
 

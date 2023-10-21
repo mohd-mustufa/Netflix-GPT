@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const VideoTitle = ({ title, name, description }) => {
+  const navigate = useNavigate();
   return (
     <div className="pt-[30%] md:pt-[19%] px-4 md:px-12 absolute text-white">
       <h1 className="text-2xl md:text-5xl font-bold text-shadow md:text-shadow-sm shadow-black">
@@ -10,7 +12,10 @@ const VideoTitle = ({ title, name, description }) => {
         {description}
       </p>
       <div>
-        <button className="bg-white px-2 md:px-10 py-1 md:py-2 md:pb-3 rounded-md text-black font-medium text-sm md:text-xl hover:opacity-80">
+        <button
+          className="bg-white px-2 md:px-10 py-1 md:py-2 md:pb-3 rounded-md text-black font-medium text-sm md:text-xl hover:opacity-80"
+          onClick={() => navigate("/player")}
+        >
           <svg className="hidden md:inline w-6 h-6 mr-2">
             <path
               d="M5 2.69127C5 1.93067 5.81547 1.44851 6.48192 1.81506L23.4069 11.1238C24.0977 11.5037 24.0977 12.4963 23.4069 12.8762L6.48192 22.1849C5.81546 22.5515 5 22.0693 5 21.3087V2.69127Z"

@@ -4,6 +4,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
+import Player from "./Player";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -26,6 +27,10 @@ const Body = () => {
     {
       path: "/browse/tv",
       element: <Browse />,
+    },
+    {
+      path: "/player",
+      element: <Player />,
     },
     {
       path: "*",
