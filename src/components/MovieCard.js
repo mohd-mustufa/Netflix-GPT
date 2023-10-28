@@ -8,15 +8,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-const MovieCard = ({
-  poster,
-  name,
-  title,
-  background,
-  genres,
-  index,
-  finalIndex,
-}) => {
+const MovieCard = ({ poster, name, title, background, genres }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const genreList = useSelector((store) =>

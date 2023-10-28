@@ -29,25 +29,25 @@ const MovieList = ({ title, movies }) => {
     const totalWidth = listRef.current.getBoundingClientRect().width;
 
     // Getting the space the element has occupied towards the right of the screen (not visible to user)
-    const spaceLeft =
+    const right =
       direction === "right"
         ? totalWidth - (-left + (isLargeScreen ? largeVisible : smallVisible))
         : -left;
 
     // Setting how much px the slider should move on clicking the left / right button
     const move = isLargeScreen
-      ? spaceLeft < largeTranslate
-        ? spaceLeft
+      ? right < largeTranslate
+        ? right
         : largeTranslate
-      : spaceLeft < smallTranslate
-      ? spaceLeft
+      : right < smallTranslate
+      ? right
       : smallTranslate;
 
     // Updating the states
     (left === 0 || left + move === 0) && direction === "left"
       ? setShowLeftControl(false)
       : setShowLeftControl(true);
-    spaceLeft - move === 0 && direction === "right"
+    right - move === 0 && direction === "right"
       ? setShowRightControl(false)
       : setShowRightControl(true);
 
@@ -64,15 +64,6 @@ const MovieList = ({ title, movies }) => {
 
   useEffect(() => {}, [showLeftControl, showRightControl]);
 
-  let finalIndex = 0;
-  if (movies) {
-    movies = movies.filter((movie) => movie.poster_path);
-    finalIndex = movies.reduce(
-      (count, movie) => (movie.poster_path ? count + 1 : count),
-      0
-    );
-  }
-
   return (
     <div
       className="px-7 md:px-12 relative max-h-[334px]"
@@ -87,11 +78,9 @@ const MovieList = ({ title, movies }) => {
       )}
       <div className="flex overflow-x-hidden">
         <div className="flex" ref={listRef}>
-          {movies?.map((movie, index) => (
+          {movies?.map((movie) => (
             <MovieCard
               key={movie.id}
-              index={index}
-              finalIndex={finalIndex}
               poster={movie.poster_path}
               name={movie.name}
               title={movie.title}
