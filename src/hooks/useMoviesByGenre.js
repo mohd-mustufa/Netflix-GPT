@@ -4,7 +4,7 @@ import {
   MOVIES_BY_GENRE_URL,
   MOVIE_GENRE_LIST_URL,
 } from "../utils/constants";
-import { addMoviesByGenre } from "../redux/moviesSlice";
+import { addMovieGenreList, addMoviesByGenre } from "../redux/moviesSlice";
 import { useEffect } from "react";
 
 const useMoviesByGenre = () => {
@@ -21,6 +21,11 @@ const useMoviesByGenre = () => {
     jsonData.genres.forEach(
       (genre) => (genreList[genre.name] = genre.id.toString())
     );
+
+    const storeList = {};
+    jsonData.genres.forEach((genre) => (storeList[genre.id] = genre.name));
+    dispatch(addMovieGenreList(storeList));
+
     return genreList;
   };
 

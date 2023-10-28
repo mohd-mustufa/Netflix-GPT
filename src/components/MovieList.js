@@ -9,8 +9,8 @@ const MovieList = ({ title, movies }) => {
   const listRef = useRef();
 
   // Setting the constants
-  const largeTranslate = 752;
-  const largeOffset = 48;
+  const largeTranslate = 752; // Move the large screens by 752px
+  const largeOffset = 48; // The area where we have the slider buttons
   const smallTranslate = 304;
   const smallOffset = 28;
 
@@ -64,9 +64,18 @@ const MovieList = ({ title, movies }) => {
 
   useEffect(() => {}, [showLeftControl, showRightControl]);
 
+  let finalIndex = 0;
+  if (movies) {
+    movies = movies.filter((movie) => movie.poster_path);
+    finalIndex = movies.reduce(
+      (count, movie) => (movie.poster_path ? count + 1 : count),
+      0
+    );
+  }
+
   return (
     <div
-      className="px-7 md:px-12 relative"
+      className="px-7 md:px-12 relative max-h-[334px]"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
@@ -78,8 +87,17 @@ const MovieList = ({ title, movies }) => {
       )}
       <div className="flex overflow-x-hidden">
         <div className="flex" ref={listRef}>
-          {movies?.map((movie) => (
-            <MovieCard key={movie.id} poster={movie.poster_path} />
+          {movies?.map((movie, index) => (
+            <MovieCard
+              key={movie.id}
+              index={index}
+              finalIndex={finalIndex}
+              poster={movie.poster_path}
+              name={movie.name}
+              title={movie.title}
+              background={movie.backdrop_path}
+              genres={movie.genre_ids}
+            />
           ))}
         </div>
       </div>

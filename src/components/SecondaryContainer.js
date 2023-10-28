@@ -10,7 +10,7 @@ const SecondaryContainer = () => {
   const path = window.location.pathname;
 
   return (
-    <div className="md:-mt-48 bg-black">
+    <div className="md:-mt-32 bg-black">
       <div className="hidden md:block w-full h-40 absolute bottom-0 bg-gradient-to-t from-black"></div>
       {path === "/browse" && (
         <>

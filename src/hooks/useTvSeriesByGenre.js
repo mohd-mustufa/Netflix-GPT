@@ -4,7 +4,10 @@ import {
   TV_SERIES_BY_GENRE_URL,
   TV_SERIES_GENRE_LIST_URL,
 } from "../utils/constants";
-import { addTvSeriesByGenre } from "../redux/tvSeriesSlice";
+import {
+  addTvSeriesByGenre,
+  addTvSeriesGenreList,
+} from "../redux/tvSeriesSlice";
 import { useEffect } from "react";
 
 const useTvSeriesByGenre = () => {
@@ -23,6 +26,11 @@ const useTvSeriesByGenre = () => {
     jsonData.genres.forEach(
       (genre) => (genreList[genre.name] = genre.id.toString())
     );
+
+    const storeList = {};
+    jsonData.genres.forEach((genre) => (storeList[genre.id] = genre.name));
+    dispatch(addTvSeriesGenreList(storeList));
+
     return genreList;
   };
 
