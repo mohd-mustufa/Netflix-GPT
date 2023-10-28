@@ -25,7 +25,7 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
   return (
     <div
       className={`w-36 md:w-[180px] mr-2 relative transition-all duration-400 " ${
-        isHovered ? "w-[270px] md:w-[340px] z-10" : ""
+        isHovered ? "w-[270px] md:w-[335px] z-10" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -39,11 +39,11 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
       </div>
       {isHovered && (
         <div>
-          <div className="text-white font-bold md:text-2xl whitespace-nowrap overflow-ellipsis truncate cursor:pointer">
+          <div className="text-white font-bold md:text-xl whitespace-nowrap overflow-ellipsis truncate cursor:pointer">
             {title || name}
           </div>
           <div className="flex justify-between text-white text-xl md:text-3xl">
-            <div className="flex space-x-1 space-y-1 cursor-pointer">
+            <div className="flex space-x-1 cursor-pointer">
               <IoPlayCircleSharp
                 title="Play"
                 onClick={() => navigate("/player")}
