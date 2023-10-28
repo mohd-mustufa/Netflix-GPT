@@ -66,7 +66,7 @@ const MovieList = ({ title, movies }) => {
 
   return (
     <div
-      className="px-7 md:px-12 relative max-h-[334px]"
+      className="px-7 md:px-12 relative max-h-[350px]"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >

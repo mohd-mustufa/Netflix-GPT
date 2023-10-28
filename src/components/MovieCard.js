@@ -24,7 +24,7 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
 
   return (
     <div
-      className={`w-36 md:w-[180px] max-h-270 mr-2 relative transition-all duration-400 " ${
+      className={`w-36 md:w-[180px] mr-2 relative transition-all duration-400 " ${
         isHovered ? "w-[270px] md:w-[340px] z-10" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
