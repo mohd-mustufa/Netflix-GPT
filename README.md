@@ -42,7 +42,7 @@ This is a Netflix clone project with a wide range of features including user aut
 **JavaScript and React:** For the dynamic and interactive components.  
 **Firebase:** For user authentication, data storage and hosting.  
 **Redux:** For state management.  
-**TMDB APIs:** For fetching movie and TV series data. The GptSearch feature utilizes Gpt APIs for the AI-powered recommendations.  
+**TMDB and GPT APIs:** For fetching movie and TV series data. The GptSearch feature utilizes Gpt APIs for the AI-powered recommendations.  
 **React Router:** Navigation within the app is managed using `react-router-dom` for a smooth user experience.
 
 ## Usage
