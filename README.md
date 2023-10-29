@@ -1,6 +1,6 @@
 # Netflix-GPT
 
-This is a Netflix clone project with a wide range of features including user authentication, multi-language support, a Netflix-like user interface, a unique GptSearch feature for AI-powered movie and TV series recommendations, and more. It fetches data from the TMDB API and is hosted on Heroku.
+This is a Netflix clone project with a wide range of features including user authentication, multi-language support, a Netflix-like user interface, a unique GptSearch feature for AI-powered movie and TV series recommendations, and more. It fetches data from the TMDB API and is hosted on Firebase.
 
 ## Features
 
@@ -37,14 +37,13 @@ This is a Netflix clone project with a wide range of features including user aut
 
 ## Tech Stack
 
-**HTML:** For the project's structure and layout.
-**CSS and Tailwind:** For styling and responsive design.
-**JavaScript and React:** For the dynamic and interactive components.
-**Firebase:** For user authentication and data storage.
-**Redux:** For state management.
-**TMDB APIs:** For fetching movie and TV series data. The GptSearch feature utilizes Gpt APIs for the AI-powered recommendations.
+**HTML:** For the project's structure and layout.  
+**CSS and Tailwind:** For styling and responsive design.  
+**JavaScript and React:** For the dynamic and interactive components.  
+**Firebase:** For user authentication, data storage and hosting.  
+**Redux:** For state management.  
+**TMDB APIs:** For fetching movie and TV series data. The GptSearch feature utilizes Gpt APIs for the AI-powered recommendations.  
 **React Router:** Navigation within the app is managed using `react-router-dom` for a smooth user experience.
-**Heroku:** For hosting the project.
 
 ## Usage
 
@@ -58,7 +57,7 @@ git clone https://github.com/mohd-mustufa/Netflix-GPT.git
 2. Install dependencies:
 
 ```
-cd netflix-clone
+cd Netflix-GPT
 npm install
 ```
 
@@ -76,7 +75,7 @@ npm start
 
 ## Live Demo
 
-Check out the live demo hosted on Heroku: [NetflixGPT](https://netflixgpt-e12de.web.app/)
+Check out the live demo of the website: [NetflixGPT](https://netflixgpt-e12de.web.app/)
 
 ## Contributing
 
