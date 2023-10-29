@@ -76,7 +76,7 @@ npm start
 
 ## Live Demo
 
-Check out the live demo hosted on Heroku:
+Check out the live demo hosted on Heroku: [NetflixGPT](https://netflixgpt-e12de.web.app/)
 
 ## Contributing
 
