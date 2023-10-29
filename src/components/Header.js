@@ -181,20 +181,10 @@ const Header = (props) => {
             <button
               className="text-white mr-4 md:mr-7"
               onClick={() => {
-                navigate("/browse");
                 dispatch(setGptSearchFalse());
               }}
             >
               {language[langId].myList}
-            </button>
-            <button
-              className="text-white"
-              onClick={() => {
-                navigate("/browse/tv");
-                dispatch(setGptSearchFalse());
-              }}
-            >
-              {language[langId].search}
             </button>
           </div>
 

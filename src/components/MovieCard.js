@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({ poster, name, title, background, genres }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
   const genreList = useSelector((store) =>
     title ? store.movies.moviesGenreList : store.tvSeries.tvSeriesGenreList
   );
@@ -48,10 +50,23 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
                 title="Play"
                 onClick={() => navigate("/player")}
               />
-              <RiThumbUpFill title="Like" />
-              <RiThumbDownFill title="Dislike" />
+              <RiThumbUpFill
+                title="Like"
+                onClick={() => {
+                  setIsLiked((prevState) => !prevState);
+                  setIsDisliked(false);
+                }}
+                style={{ color: isLiked ? "blue" : "inherit" }}
+              />
+              <RiThumbDownFill
+                title="Dislike"
+                onClick={() => {
+                  setIsDisliked((prevState) => !prevState);
+                  setIsLiked(false);
+                }}
+                style={{ color: isDisliked ? "blue" : "inherit" }}
+              />
 
-              <BsCheck title="Remove from List" />
               <AiOutlinePlus title="Add to my list" />
             </div>
             <div className="cursor-pointer">
