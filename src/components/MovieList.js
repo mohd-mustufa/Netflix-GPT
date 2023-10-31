@@ -71,12 +71,12 @@ const MovieList = ({ title, movies }) => {
       onMouseLeave={() => setShowControls(false)}
     >
       <h1 className="text-xl md:text-2xl py-4 text-white">{title}</h1>
-      {showControls && showLeftControl && (
+      {showControls && showLeftControl && window.innerWidth >= 768 && (
         <div className="text-white text-3xl md:text-5xl z-10 cursor-pointer absolute left-0 top-40 md:top-44">
           <AiOutlineLeft onClick={() => handleDirection("left")} />
         </div>
       )}
-      <div className="flex overflow-x-hidden">
+      <div className="flex overflow-x-scroll md:overflow-x-hidden">
         <div className="flex" ref={listRef}>
           {movies?.map((movie) => (
             <MovieCard
@@ -90,7 +90,7 @@ const MovieList = ({ title, movies }) => {
           ))}
         </div>
       </div>
-      {showControls && showRightControl && (
+      {showControls && showRightControl && window.innerWidth >= 768 && (
         <div className="text-white text-3xl md:text-5xl z-10 cursor-pointer absolute right-0 top-40 md:top-44">
           <AiOutlineRight onClick={() => handleDirection("right")} />
         </div>

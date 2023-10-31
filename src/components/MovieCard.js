@@ -5,7 +5,6 @@ import { IoPlayCircleSharp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
-import { BsCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ poster, name, title, background, genres }) => {
@@ -41,7 +40,7 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
       </div>
       {isHovered && (
         <div>
-          <div className="text-white font-bold md:text-xl whitespace-nowrap overflow-ellipsis truncate cursor:pointer">
+          <div className="text-white font-bold md:text-xl truncate cursor:pointer">
             {title || name}
           </div>
           <div className="flex justify-between text-white text-xl md:text-3xl">
@@ -73,7 +72,7 @@ const MovieCard = ({ poster, name, title, background, genres }) => {
               <BiChevronDown title="More Info" />
             </div>
           </div>
-          <div className="text-white">{genreNames.join(", ")}</div>
+          <div className="text-white truncate">{genreNames.join(", ")}</div>
         </div>
       )}
     </div>
