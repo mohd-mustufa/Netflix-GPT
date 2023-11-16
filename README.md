@@ -40,7 +40,7 @@ This is a Netflix clone project with a wide range of features including user aut
 **HTML:** For the project's structure and layout.  
 **CSS and Tailwind:** For styling and responsive design.  
 **JavaScript and React:** For the dynamic and interactive components.  
-**Firebase:** For user authentication, data storage and hosting.  
+**Firebase:** For user authentication and data storage.  
 **Redux:** For state management.  
 **TMDB and GPT APIs:** For fetching movie and TV series data. The GptSearch feature utilizes Gpt APIs for the AI-powered recommendations.  
 **React Router:** Navigation within the app is managed using `react-router-dom` for a smooth user experience.
@@ -75,7 +75,7 @@ npm start
 
 ## Live Demo
 
-Check out the live demo of the website: [NetflixGPT](https://netflixgpt-e12de.web.app/)
+Check out the live demo of the website: [NetflixGPT](https://netflixgpt-mus.netlify.app/)
 
 ## Contributing
 
